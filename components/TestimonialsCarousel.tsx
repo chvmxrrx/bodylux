@@ -93,6 +93,18 @@ export default function TestimonialsCarousel() {
     { key: `card-${next}`, idx: next, isCenter: false },
   ];
 
+  const cardVariants = {
+    enter: (d: number) => ({
+      x: d > 0 ? "100%" : "-100%",
+      opacity: 0,
+    }),
+    center: { x: "0%", opacity: 1 },
+    exit: (d: number) => ({
+      x: d > 0 ? "-100%" : "100%",
+      opacity: 0,
+    }),
+  };
+
   return (
     <section className="bg-[#f2f0ed] py-28 px-6">
       <div className="max-w-6xl mx-auto">
@@ -122,15 +134,10 @@ export default function TestimonialsCarousel() {
                     key={key}
                     layout
                     custom={dir}
-                    initial={(d: number) => ({
-                      x: d > 0 ? "100%" : "-100%",
-                      opacity: 0,
-                    })}
-                    animate={{ x: "0%", opacity: 1 }}
-                    exit={(d: number) => ({
-                      x: d > 0 ? "-100%" : "100%",
-                      opacity: 0,
-                    })}
+                    variants={cardVariants}
+                    initial="enter"
+                    animate="center"
+                    exit="exit"
                     transition={{ duration: 0.42, ease: "easeInOut" }}
                     className="flex-none px-3"
                     style={{ width: "33.333%" }}
