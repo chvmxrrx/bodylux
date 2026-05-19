@@ -1,65 +1,144 @@
-import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight, Heart, Star, Shield } from "lucide-react";
+import Hero from "@/components/Hero";
+import ServiceCard from "@/components/ServiceCard";
+import AnimatedSection from "@/components/AnimatedSection";
+import TestimonialsCarousel from "@/components/TestimonialsCarousel";
+import { services } from "@/data/services";
+import { getWhatsAppUrl } from "@/data/siteConfig";
 
-export default function Home() {
+const benefits = [
+  {
+    Icon: Heart,
+    title: "Acompañamiento Real",
+    description:
+      "No estás sola en el proceso. Nuestro equipo te guía en cada etapa, desde la evaluación inicial hasta los resultados definitivos.",
+  },
+  {
+    Icon: Star,
+    title: "Tecnología Premium",
+    description:
+      "Equipos de última generación combinados con técnicas expertas para resultados visibles, duraderos y seguros.",
+  },
+  {
+    Icon: Shield,
+    title: "Privacidad Total",
+    description:
+      "Un espacio exclusivo y privado diseñado para que te sientas segura, cómoda y contenida en todo momento.",
+  },
+];
+
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <>
+      <Hero />
+
+      {/* Manifesto */}
+      <section className="bg-crema py-28 px-6">
+        <div className="max-w-3xl mx-auto text-center">
+          <AnimatedSection>
+            <span className="text-dorado text-xs tracking-widest uppercase mb-4 block">
+              Nuestra Filosofía
+            </span>
+            <h2 className="font-heading text-4xl md:text-5xl text-espresso leading-tight mb-6">
+              Bodylux no es solo un tratamiento.
+              <br />
+              Es un proceso de transformación.
+            </h2>
+            <p className="text-marron/70 text-lg leading-relaxed">
+              Creemos que cada cuerpo tiene su propio ritmo y sus propias
+              necesidades. Por eso diseñamos planes completamente personalizados
+              que se adaptan a ti, no al revés.
+            </p>
+          </AnimatedSection>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      {/* Services grid */}
+      <section className="bg-beige py-28 px-6">
+        <div className="max-w-7xl mx-auto">
+          <AnimatedSection className="mb-14 text-center">
+            <span className="text-dorado text-xs tracking-widest uppercase mb-4 block">
+              Lo que hacemos
+            </span>
+            <h2 className="font-heading text-4xl md:text-5xl text-espresso">
+              Nuestros Servicios
+            </h2>
+          </AnimatedSection>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {services.map((service, i) => (
+              <AnimatedSection key={service.id} delay={i * 0.1}>
+                <ServiceCard service={service} ctaHref="/servicios" />
+              </AnimatedSection>
+            ))}
+          </div>
+
+          <AnimatedSection className="text-center mt-14">
+            <Link
+              href="/servicios"
+              className="inline-flex items-center gap-2 border border-espresso text-espresso text-xs tracking-widest uppercase px-8 py-4 transition-all duration-300 hover:bg-espresso hover:text-crema"
+            >
+              Ver todos los servicios
+              <ArrowRight size={13} />
+            </Link>
+          </AnimatedSection>
         </div>
-      </main>
-    </div>
+      </section>
+
+      {/* Benefits */}
+      <section className="bg-espresso py-28 px-6">
+        <div className="max-w-6xl mx-auto">
+          <AnimatedSection className="mb-14 text-center">
+            <span className="text-dorado text-xs tracking-widest uppercase mb-4 block">
+              Por qué Bodylux
+            </span>
+            <h2 className="font-heading text-4xl md:text-5xl text-crema">
+              El diferenciador humano
+            </h2>
+          </AnimatedSection>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+            {benefits.map(({ Icon, title, description }, i) => (
+              <AnimatedSection key={title} delay={i * 0.15} className="text-center">
+                <div className="inline-flex items-center justify-center w-14 h-14 border border-dorado/40 mb-6">
+                  <Icon size={20} className="text-dorado" />
+                </div>
+                <h3 className="font-heading text-xl text-crema mb-3">{title}</h3>
+                <p className="text-crema/60 text-sm leading-relaxed">{description}</p>
+              </AnimatedSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <TestimonialsCarousel />
+
+      {/* Final CTA */}
+      <section className="bg-dorado py-24 px-6">
+        <div className="max-w-3xl mx-auto text-center">
+          <AnimatedSection>
+            <h2 className="font-heading text-4xl md:text-5xl text-crema mb-6">
+              ¿Lista para comenzar
+              <br />
+              tu transformación?
+            </h2>
+            <p className="text-crema/80 text-lg mb-10">
+              Agenda tu evaluación personalizada hoy. Sin compromiso, sin
+              precios fijos. Solo tu proceso.
+            </p>
+            <a
+              href={getWhatsAppUrl()}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-crema text-espresso text-xs tracking-widest uppercase px-10 py-5 transition-all duration-300 hover:bg-espresso hover:text-crema"
+            >
+              Cotizar mi plan por WhatsApp
+              <ArrowRight size={14} />
+            </a>
+          </AnimatedSection>
+        </div>
+      </section>
+    </>
   );
 }
