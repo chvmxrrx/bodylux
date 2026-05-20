@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ArrowRight } from "lucide-react";
+import Hero from "@/components/Hero";
 import AnimatedSection from "@/components/AnimatedSection";
 import ImageFallback from "@/components/ImageFallback";
 import { getWhatsAppUrl } from "@/data/siteConfig";
@@ -10,103 +11,167 @@ export const metadata: Metadata = {
     "Conoce la filosofía y el equipo detrás de Bodylux. Un espacio cálido y profesional alejado de la frialdad clínica tradicional.",
 };
 
-const pillars = [
+const valores = [
   {
-    title: "Misión",
-    text: "Acompañar a cada persona en su proceso de transformación corporal con tratamientos personalizados, tecnología de vanguardia y un enfoque humano que va más allá del resultado.",
+    title: "Cercanía real",
+    text: "No somos una clínica fría. Acompañamos, escuchamos y hacemos sentir cómoda a cada paciente.",
   },
   {
-    title: "Visión",
-    text: "Ser el referente de bienestar y transformación corporal premium en la región, reconocidos por la calidez de nuestra atención y la efectividad de nuestros resultados.",
+    title: "Profesionalismo",
+    text: "Hay técnica, conocimiento y seguridad en cada tratamiento.",
   },
   {
-    title: "Valores",
-    text: "Contención, privacidad, excelencia técnica y autenticidad. Creemos en el poder de sentirse bien en el propio cuerpo como fundamento de la confianza personal.",
+    title: "Honestidad",
+    text: "No prometemos milagros irreales. Educamos, explicamos procesos y mostramos resultados reales.",
+  },
+  {
+    title: "Contención",
+    text: "Entendemos que hay emociones detrás del cuerpo: inseguridad, post operatorio, cambios.",
+  },
+  {
+    title: "Confianza",
+    text: "Todo lo que hacemos busca que la paciente se sienta segura: desde el diagnóstico hasta el resultado.",
+  },
+  {
+    title: "Resultados visibles",
+    text: "Sí importa lo estético, pero desde un enfoque responsable y bien trabajado.",
   },
 ];
+
+const pilares = ["Resultados", "Experiencia", "Educación", "Acompañamiento"];
 
 export default function NosotrosPage() {
   return (
     <>
-      {/* Header */}
-      <section className="bg-beige pt-40 pb-20 px-6">
-        <div className="max-w-5xl mx-auto">
-          <AnimatedSection>
-            <span className="text-dorado text-xs tracking-widest uppercase mb-4 block">
-              Quiénes Somos
-            </span>
-            <h1 className="font-heading text-5xl md:text-7xl text-espresso leading-tight max-w-3xl">
-              Donde la estética
-              <br />
-              encuentra la calidez.
-            </h1>
-          </AnimatedSection>
+      <Hero
+        label="Quiénes Somos"
+        title={"Donde la estética encuentra la calidez"}
+        image="/images/placeholders/equipo2.jpg"
+        layout="center"
+        imagePosition="top center"
+      />
+
+      {/* Nuestra Filosofía */}
+      <section className="bg-white py-28 px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-[2fr_3fr] gap-12 lg:gap-20 items-center">
+
+            {/* Fotografía — izquierda */}
+            <AnimatedSection className="relative">
+              <div className="aspect-[2/3] relative overflow-hidden">
+                <ImageFallback
+                  src="/images/placeholders/owner.jpg"
+                  alt="Fundadora Bodylux"
+                  fill
+                  className="object-cover object-top"
+                />
+              </div>
+              <div className="absolute -bottom-5 -right-5 w-28 h-28 border border-dorado/25 hidden lg:block pointer-events-none" />
+            </AnimatedSection>
+
+            {/* Texto — derecha */}
+            <AnimatedSection delay={0.2}>
+              <span className="text-dorado text-xs tracking-widest uppercase mb-4 block">
+                Nuestra Filosofía
+              </span>
+              <h2 className="font-heading text-4xl md:text-5xl text-espresso leading-tight mb-6">
+                No solo transformamos cuerpos.
+                <br />
+                Acompañamos procesos reales.
+              </h2>
+              <p className="text-marron/70 text-lg leading-relaxed mb-5">
+                Sabemos que detrás de cada cambio hay inseguridades, dudas y
+                expectativas. Por eso no se trata solo de un tratamiento, sino
+                de sentirte guiada, contenida y segura en cada etapa.
+              </p>
+              <p className="text-marron/70 text-lg leading-relaxed">
+                Aquí no vienes solo a hacerte un procedimiento. Vienes a verte
+                y sentirte mejor contigo misma.
+              </p>
+            </AnimatedSection>
+
+          </div>
         </div>
       </section>
 
-      {/* Philosophy — asymmetric layout */}
-      <section className="bg-espresso py-24 px-6">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <AnimatedSection className="relative">
-            <div className="aspect-[3/4] relative overflow-hidden">
-              <ImageFallback
-                src="/images/placeholders/equipo.jpg"
-                alt="Equipo Bodylux"
-                fill
-                className="object-cover"
-              />
-            </div>
-            <div className="absolute -bottom-6 -right-6 w-48 h-48 bg-dorado/10 hidden lg:block pointer-events-none" />
-          </AnimatedSection>
-
-          <AnimatedSection delay={0.2}>
+      {/* Misión & Visión */}
+      <section className="bg-[#f2f0ed] py-28 px-6">
+        <div className="max-w-6xl mx-auto">
+          <AnimatedSection className="mb-14 text-center">
             <span className="text-dorado text-xs tracking-widest uppercase mb-4 block">
-              Nuestra Filosofía
+              Propósito
             </span>
-            <h2 className="font-heading text-3xl md:text-4xl text-crema mb-6 leading-tight">
-              Más que un centro estético.
-              <br />
-              Un espacio de confianza.
+            <h2 className="font-heading text-4xl md:text-5xl text-espresso">
+              Misión &amp; Visión
             </h2>
-            <p className="text-crema/60 leading-relaxed mb-5">
-              En Bodylux rechazamos la frialdad clínica que suele caracterizar
-              al mundo de la estética. Aquí encontrarás un ambiente cálido,
-              discreto y completamente enfocado en tu bienestar.
-            </p>
-            <p className="text-crema/60 leading-relaxed mb-5">
-              Desde que llegas, el ambiente está diseñado para que te sientas
-              cómoda: aromas, música ambiente y espacios privados que garantizan
-              tu intimidad en cada visita.
-            </p>
-            <p className="text-crema/60 leading-relaxed">
-              Nuestro equipo no solo aplica tratamientos. Te acompaña, te
-              escucha y diseña contigo el camino hacia los resultados que
-              buscas.
-            </p>
           </AnimatedSection>
+
+          <div className="grid grid-cols-1 md:grid-cols-2">
+            <AnimatedSection>
+              <div className="p-10 border-t-2 border-dorado/30 hover:border-dorado transition-colors duration-300 h-full">
+                <span className="font-heading text-5xl text-dorado/15 mb-2 block leading-none">
+                  01
+                </span>
+                <h3 className="font-heading text-2xl text-espresso mb-4">
+                  Misión
+                </h3>
+                <p className="text-marron/70 text-sm leading-relaxed mb-3">
+                  Acompañar a cada mujer en su proceso de cambio, entregando
+                  tratamientos efectivos y personalizados para moldear, reducir
+                  y reafirmar, con un enfoque profesional y consciente.
+                </p>
+                <p className="text-marron/70 text-sm leading-relaxed">
+                  Más que resultados físicos, buscamos que cada paciente
+                  recupere su confianza y se sienta segura en su propio cuerpo.
+                </p>
+              </div>
+            </AnimatedSection>
+
+            <AnimatedSection delay={0.15}>
+              <div className="p-10 border-t-2 border-dorado/30 hover:border-dorado transition-colors duration-300 h-full">
+                <span className="font-heading text-5xl text-dorado/15 mb-2 block leading-none">
+                  02
+                </span>
+                <h3 className="font-heading text-2xl text-espresso mb-4">
+                  Visión
+                </h3>
+                <p className="text-marron/70 text-sm leading-relaxed mb-3">
+                  Ser un referente en tratamientos corporales en Chile,
+                  reconocido no solo por los resultados, sino por la
+                  experiencia, el acompañamiento y la confianza que generamos
+                  en cada paciente.
+                </p>
+                <p className="text-marron/70 text-sm leading-relaxed">
+                  Queremos transformar la forma en que las mujeres viven sus
+                  procesos corporales: con más información, contención y
+                  seguridad.
+                </p>
+              </div>
+            </AnimatedSection>
+          </div>
         </div>
       </section>
 
-      {/* Pillars */}
-      <section className="bg-crema py-24 px-6">
+      {/* Valores */}
+      <section className="bg-white py-28 px-6">
         <div className="max-w-6xl mx-auto">
           <AnimatedSection className="mb-14 text-center">
             <span className="text-dorado text-xs tracking-widest uppercase mb-4 block">
               Lo que nos define
             </span>
             <h2 className="font-heading text-4xl md:text-5xl text-espresso">
-              Nuestros Pilares
+              Nuestros Valores
             </h2>
           </AnimatedSection>
 
-          <div className="grid grid-cols-1 md:grid-cols-3">
-            {pillars.map(({ title, text }, i) => (
-              <AnimatedSection key={title} delay={i * 0.15}>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+            {valores.map(({ title, text }, i) => (
+              <AnimatedSection key={title} delay={i * 0.1}>
                 <div className="p-10 border-t-2 border-dorado/30 hover:border-dorado transition-colors duration-300">
                   <span className="font-heading text-5xl text-dorado/15 mb-2 block leading-none">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <h3 className="font-heading text-2xl text-espresso mb-4">
+                  <h3 className="font-heading text-xl text-espresso mb-3">
                     {title}
                   </h3>
                   <p className="text-marron/70 text-sm leading-relaxed">{text}</p>
@@ -117,8 +182,35 @@ export default function NosotrosPage() {
         </div>
       </section>
 
-      {/* Space section */}
-      <section className="bg-beige py-24 px-6">
+      {/* Pilares */}
+      <section className="bg-[#f2f0ed] py-28 px-6">
+        <div className="max-w-6xl mx-auto">
+          <AnimatedSection className="mb-14 text-center">
+            <span className="text-dorado text-xs tracking-widest uppercase mb-4 block">
+              Nuestra base
+            </span>
+            <h2 className="font-heading text-4xl md:text-5xl text-espresso">
+              Pilares
+            </h2>
+          </AnimatedSection>
+
+          <div className="grid grid-cols-2 lg:grid-cols-4">
+            {pilares.map((pilar, i) => (
+              <AnimatedSection key={pilar} delay={i * 0.12}>
+                <div className="p-10 border-t-2 border-dorado/30 hover:border-dorado transition-colors duration-300 text-center">
+                  <span className="font-heading text-6xl text-dorado/10 block leading-none mb-4">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="font-heading text-xl text-espresso">{pilar}</h3>
+                </div>
+              </AnimatedSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Nuestro Espacio */}
+      <section className="bg-white py-28 px-6">
         <div className="max-w-6xl mx-auto overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-2">
             <AnimatedSection>
@@ -165,6 +257,31 @@ export default function NosotrosPage() {
               </a>
             </AnimatedSection>
           </div>
+        </div>
+      </section>
+
+      {/* CTA final */}
+      <section className="bg-dorado py-24 px-6">
+        <div className="max-w-3xl mx-auto text-center">
+          <AnimatedSection>
+            <h2 className="font-heading text-4xl md:text-5xl text-crema mb-6">
+              ¿Lista para comenzar
+              <br />
+              tu transformación?
+            </h2>
+            <p className="text-crema/80 text-lg mb-10">
+              Agenda tu evaluación personalizada hoy.
+            </p>
+            <a
+              href={getWhatsAppUrl()}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-crema text-espresso text-xs tracking-widest uppercase px-10 py-5 transition-all duration-300 hover:bg-espresso hover:text-crema"
+            >
+              Cotizar mi plan por WhatsApp
+              <ArrowRight size={14} />
+            </a>
+          </AnimatedSection>
         </div>
       </section>
     </>

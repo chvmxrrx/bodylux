@@ -34,7 +34,7 @@ export default function HomePage() {
       <Hero />
 
       {/* Manifesto */}
-      <section className="bg-crema py-28 px-6">
+      <section className="bg-white py-28 px-6">
         <div className="max-w-3xl mx-auto text-center">
           <AnimatedSection>
             <span className="text-dorado text-xs tracking-widest uppercase mb-4 block">
@@ -55,7 +55,7 @@ export default function HomePage() {
       </section>
 
       {/* Services grid */}
-      <section className="bg-beige py-28 px-6">
+      <section className="bg-[#f2f0ed] py-28 px-6">
         <div className="max-w-7xl mx-auto">
           <AnimatedSection className="mb-14 text-center">
             <span className="text-dorado text-xs tracking-widest uppercase mb-4 block">
@@ -67,7 +67,7 @@ export default function HomePage() {
           </AnimatedSection>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {services.map((service, i) => (
+            {services.slice(0, 4).map((service, i) => (
               <AnimatedSection key={service.id} delay={i * 0.1}>
                 <ServiceCard service={service} ctaHref="/servicios" />
               </AnimatedSection>
@@ -87,13 +87,13 @@ export default function HomePage() {
       </section>
 
       {/* Benefits */}
-      <section className="bg-espresso py-28 px-6">
+      <section className="bg-white py-28 px-6">
         <div className="max-w-6xl mx-auto">
           <AnimatedSection className="mb-14 text-center">
             <span className="text-dorado text-xs tracking-widest uppercase mb-4 block">
               Por qué Bodylux
             </span>
-            <h2 className="font-heading text-4xl md:text-5xl text-crema">
+            <h2 className="font-heading text-4xl md:text-5xl text-espresso">
               El diferenciador humano
             </h2>
           </AnimatedSection>
@@ -104,8 +104,8 @@ export default function HomePage() {
                 <div className="inline-flex items-center justify-center w-14 h-14 border border-dorado/40 mb-6">
                   <Icon size={20} className="text-dorado" />
                 </div>
-                <h3 className="font-heading text-xl text-crema mb-3">{title}</h3>
-                <p className="text-crema/60 text-sm leading-relaxed">{description}</p>
+                <h3 className="font-heading text-xl text-espresso mb-3">{title}</h3>
+                <p className="text-marron/60 text-sm leading-relaxed">{description}</p>
               </AnimatedSection>
             ))}
           </div>

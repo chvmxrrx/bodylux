@@ -4,19 +4,23 @@ import { motion } from "framer-motion";
 import ImageFallback from "./ImageFallback";
 
 interface HeroProps {
-  title?:    string;
-  subtitle?: string;
-  image?:    string;
-  layout?:   "left" | "center";
+  title?:         string;
+  subtitle?:      string;
+  label?:         string;
+  image?:         string;
+  layout?:        "left" | "center";
+  imagePosition?: string;
 }
 
 // Easing curve for the premium zoom-out feel
 const easeOut = [0.22, 1, 0.36, 1] as const;
 
 export default function Hero({
-  title    = "SOMOS BODYLUX",
-  image    = "/images/placeholders/hero.jpg",
-  layout   = "center",
+  title         = "SOMOS BODYLUX",
+  label         = "Estética Premium",
+  image         = "/images/placeholders/hero.jpg",
+  layout        = "center",
+  imagePosition = "center center",
 }: HeroProps) {
   const align = layout === "center" ? "text-center items-center" : "text-left items-start";
 
@@ -45,6 +49,7 @@ export default function Hero({
             alt="Bodylux Hero"
             fill
             className="object-cover"
+            style={{ objectPosition: imagePosition }}
             priority
           />
         </div>
@@ -66,7 +71,7 @@ export default function Hero({
           transition={{ duration: 1.4, ease: easeOut, delay: 0.2 }}
           className="text-dorado text-xs uppercase mb-6 block tracking-[0.4em]"
         >
-          Estética Premium
+          {label}
         </motion.span>
 
         {/* Title — fade-in + zoom-out */}

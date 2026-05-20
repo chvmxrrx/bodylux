@@ -2,14 +2,16 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import type React from "react";
 
 interface ImageFallbackProps {
-  src:       string;
-  alt:       string;
-  fill?:     boolean;
+  src:        string;
+  alt:        string;
+  fill?:      boolean;
   className?: string;
-  width?:    number;
-  height?:   number;
+  style?:     React.CSSProperties;
+  width?:     number;
+  height?:    number;
   priority?:  boolean;
 }
 
@@ -18,6 +20,7 @@ export default function ImageFallback({
   alt,
   fill,
   className,
+  style,
   width,
   height,
   priority,
@@ -49,6 +52,7 @@ export default function ImageFallback({
       width={!fill ? width : undefined}
       height={!fill ? height : undefined}
       className={className}
+      style={style}
       priority={priority}
       onError={() => setError(true)}
     />
