@@ -4,7 +4,7 @@ export const siteConfig = {
   description:
     "Tratamientos corporales de alta gama, personalizados y acompañados por profesionales que entienden que cada cuerpo es único.",
   whatsapp: {
-    number: "573001234567", // TODO: reemplaza con el número real (formato: código país + número)
+    number: "56939539801",
     defaultMessage: "Hola, me gustaría cotizar un plan personalizado en Bodylux.",
     agendarMessage:
       "Hola, quiero agendar una evaluación personalizada en Bodylux.",

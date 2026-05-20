@@ -17,10 +17,11 @@ export default function ServiciosPage() {
     <>
       <Hero
         label="Tratamientos Personalizados"
-        title={"NUESTROS\nSERVICIOS"}
+        title={"Nuestros\nServicios"}
         image="/images/placeholders/services-hero.jpg"
         layout="center"
         imagePosition="center center"
+        showCta={false}
       />
 
       {/* Intro */}

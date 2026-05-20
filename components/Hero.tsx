@@ -10,17 +10,19 @@ interface HeroProps {
   image?:         string;
   layout?:        "left" | "center";
   imagePosition?: string;
+  showCta?:       boolean;
 }
 
 // Easing curve for the premium zoom-out feel
 const easeOut = [0.22, 1, 0.36, 1] as const;
 
 export default function Hero({
-  title         = "SOMOS BODYLUX",
+  title         = "Es hora de recuperar tu confianza.",
   label         = "Estética Premium",
   image         = "/images/placeholders/hero.jpg",
   layout        = "center",
   imagePosition = "center center",
+  showCta       = true,
 }: HeroProps) {
   const align = layout === "center" ? "text-center items-center" : "text-left items-start";
 
@@ -94,19 +96,21 @@ export default function Hero({
         />
 
         {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 22 }}
-          animate={{ opacity: 1, y: 0  }}
-          transition={{ duration: 0.9, ease: easeOut, delay: 1.05 }}
-          className={`flex gap-4 flex-wrap ${layout === "center" ? "justify-center" : "justify-start"}`}
-        >
-          <a
-            href="/servicios"
-            className="inline-flex items-center gap-2 border border-crema text-crema text-xs tracking-widest uppercase px-8 py-4 transition-all duration-300 hover:bg-crema hover:text-espresso"
+        {showCta && (
+          <motion.div
+            initial={{ opacity: 0, y: 22 }}
+            animate={{ opacity: 1, y: 0  }}
+            transition={{ duration: 0.9, ease: easeOut, delay: 1.05 }}
+            className={`flex gap-4 flex-wrap ${layout === "center" ? "justify-center" : "justify-start"}`}
           >
-            Ver servicios
-          </a>
-        </motion.div>
+            <a
+              href="/servicios"
+              className="inline-flex items-center gap-2 border border-crema text-crema text-xs tracking-widest uppercase px-8 py-4 transition-all duration-300 hover:bg-crema hover:text-espresso"
+            >
+              Ver servicios
+            </a>
+          </motion.div>
+        )}
       </div>
 
       {/* ── Scroll indicator ── */}

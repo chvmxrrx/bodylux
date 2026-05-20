@@ -26,7 +26,7 @@ export default function Footer() {
 
           {/* Navigation */}
           <div>
-            <h4 className="text-xs tracking-widest uppercase text-dorado mb-5">
+            <h4 className="text-sm tracking-widest uppercase text-crema mb-5">
               Navegación
             </h4>
             <ul className="space-y-3">
@@ -45,7 +45,7 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="text-xs tracking-widest uppercase text-dorado mb-5">
+            <h4 className="text-sm tracking-widest uppercase text-crema mb-5">
               Contacto
             </h4>
             <p className="text-sm text-crema/60 mb-5 leading-relaxed">
@@ -58,7 +58,7 @@ export default function Footer() {
               rel="noopener noreferrer"
               className="inline-block border border-dorado text-dorado text-xs tracking-widest uppercase px-6 py-3 transition-all duration-300 hover:bg-dorado hover:text-crema"
             >
-              WhatsApp
+              Contáctanos
             </a>
 
             {/* Social links */}

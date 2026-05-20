@@ -20,7 +20,7 @@ const testimonials = [
   {
     name: "Karen Anahí Arriaga Fuentes",
     location: "Pedregal, México City",
-    text: "Llevo desde 2019 con mouli y siempre lo recomiendo. Los tratamientos son innovadores y no he encontrado un lugar como mouli. El trato, limpieza y profesionalismo es impecable y los resultados extraordinarios!",
+    text: "Llevo desde 2019 con Bodylux y siempre lo recomiendo. Los tratamientos son innovadores y no he encontrado un lugar como Bodylux. El trato, limpieza y profesionalismo es impecable y los resultados extraordinarios!",
     stars: 5,
   },
   {

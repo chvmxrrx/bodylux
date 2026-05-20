@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, TrendingUp, Award, BookOpen, Heart } from "lucide-react";
 import Hero from "@/components/Hero";
 import AnimatedSection from "@/components/AnimatedSection";
 import ImageFallback from "@/components/ImageFallback";
+import ImageCarousel from "@/components/ImageCarousel";
 import { getWhatsAppUrl } from "@/data/siteConfig";
 
 export const metadata: Metadata = {
@@ -38,7 +39,20 @@ const valores = [
   },
 ];
 
-const pilares = ["Resultados", "Experiencia", "Educación", "Acompañamiento"];
+const pilares = [
+  { label: "Resultados",     Icon: TrendingUp },
+  { label: "Experiencia",    Icon: Award      },
+  { label: "Educación",      Icon: BookOpen   },
+  { label: "Acompañamiento", Icon: Heart      },
+];
+
+const espacioImages = [
+  { src: "/images/placeholders/espacio.jpg",  alt: "Espacio Bodylux" },
+  { src: "/images/placeholders/espacio2.jpg", alt: "Espacio Bodylux" },
+  { src: "/images/placeholders/espacio3.jpg", alt: "Espacio Bodylux" },
+  { src: "/images/placeholders/espacio4.jpg", alt: "Espacio Bodylux" },
+  { src: "/images/placeholders/espacio5.jpg", alt: "Espacio Bodylux" },
+];
 
 export default function NosotrosPage() {
   return (
@@ -49,6 +63,7 @@ export default function NosotrosPage() {
         image="/images/placeholders/equipo2.jpg"
         layout="center"
         imagePosition="top center"
+        showCta={false}
       />
 
       {/* Nuestra Filosofía */}
@@ -195,13 +210,13 @@ export default function NosotrosPage() {
           </AnimatedSection>
 
           <div className="grid grid-cols-2 lg:grid-cols-4">
-            {pilares.map((pilar, i) => (
-              <AnimatedSection key={pilar} delay={i * 0.12}>
+            {pilares.map(({ label, Icon }, i) => (
+              <AnimatedSection key={label} delay={i * 0.12}>
                 <div className="p-10 border-t-2 border-dorado/30 hover:border-dorado transition-colors duration-300 text-center">
-                  <span className="font-heading text-6xl text-dorado/10 block leading-none mb-4">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <h3 className="font-heading text-xl text-espresso">{pilar}</h3>
+                  <div className="w-12 h-12 border border-dorado/40 flex items-center justify-center mx-auto mb-6">
+                    <Icon size={20} className="text-dorado" />
+                  </div>
+                  <h3 className="font-heading text-xl text-espresso">{label}</h3>
                 </div>
               </AnimatedSection>
             ))}
@@ -215,12 +230,7 @@ export default function NosotrosPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2">
             <AnimatedSection>
               <div className="aspect-[4/3] relative overflow-hidden">
-                <ImageFallback
-                  src="/images/placeholders/espacio.jpg"
-                  alt="Espacio Bodylux"
-                  fill
-                  className="object-cover transition-transform duration-700 hover:scale-105"
-                />
+                <ImageCarousel images={espacioImages} />
               </div>
             </AnimatedSection>
 
@@ -242,7 +252,7 @@ export default function NosotrosPage() {
                 cuidamos que tu experiencia sea inolvidable.
               </p>
               <p className="text-crema/60 text-sm leading-relaxed mb-8">
-                Espacios completamente privados, sin sala de espera compartida,
+                Espacios completamente privados,
                 con acceso discreto y un equipo que respeta tu tiempo y tu
                 proceso.
               </p>

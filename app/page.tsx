@@ -4,6 +4,7 @@ import Hero from "@/components/Hero";
 import ServiceCard from "@/components/ServiceCard";
 import AnimatedSection from "@/components/AnimatedSection";
 import TestimonialsCarousel from "@/components/TestimonialsCarousel";
+import ParallaxQuote from "@/components/ParallaxQuote";
 import { services } from "@/data/services";
 import { getWhatsAppUrl } from "@/data/siteConfig";
 
@@ -85,6 +86,8 @@ export default function HomePage() {
           </AnimatedSection>
         </div>
       </section>
+
+      <ParallaxQuote />
 
       {/* Benefits */}
       <section className="bg-white py-28 px-6">
