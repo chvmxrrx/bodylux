@@ -55,6 +55,15 @@ export default function TestimonialsCarousel() {
   const [current, setCurrent] = useState(0);
   const [dir, setDir] = useState<1 | -1>(1);
   const [busy, setBusy] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 768px)");
+    const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches);
+    setIsDesktop(mq.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
 
   const go = useCallback(
     (delta: 1 | -1) => {
@@ -86,12 +95,14 @@ export default function TestimonialsCarousel() {
   const prev = (current - 1 + n) % n;
   const next = (current + 1) % n;
 
-  // Always exactly 3 cards: previous | active | next
-  const cards = [
-    { key: `card-${prev}`, idx: prev, isCenter: false },
-    { key: `card-${current}`, idx: current, isCenter: true },
-    { key: `card-${next}`, idx: next, isCenter: false },
-  ];
+  // Desktop: prev | active | next — Mobile: solo el activo
+  const cards = isDesktop
+    ? [
+        { key: `card-${prev}`, idx: prev, isCenter: false },
+        { key: `card-${current}`, idx: current, isCenter: true },
+        { key: `card-${next}`, idx: next, isCenter: false },
+      ]
+    : [{ key: `card-${current}`, idx: current, isCenter: true }];
 
   const cardVariants = {
     enter: (d: number) => ({
@@ -120,11 +131,6 @@ export default function TestimonialsCarousel() {
 
         {/* Carousel */}
         <div className="relative px-10 md:px-14">
-          {/*
-            overflow-hidden clips cards entering/exiting.
-            relative creates the containing block for absolutely-positioned
-            exiting cards (required by AnimatePresence mode="popLayout").
-          */}
           <div className="relative overflow-hidden flex">
             <AnimatePresence mode="popLayout" initial={false} custom={dir}>
               {cards.map(({ key, idx, isCenter }) => {
@@ -140,7 +146,7 @@ export default function TestimonialsCarousel() {
                     exit="exit"
                     transition={{ duration: 0.42, ease: "easeInOut" }}
                     className="flex-none px-3"
-                    style={{ width: "33.333%" }}
+                    style={{ width: isDesktop ? "33.333%" : "100%" }}
                   >
                     <div
                       className={`h-full px-8 py-10 text-center transition-shadow duration-300 ${

@@ -1,29 +1,34 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef, useEffect } from "react";
+import { motion, useMotionValue, useTransform } from "framer-motion";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
 export default function ParallaxQuote() {
-  const ref = useRef<HTMLElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const progress = useMotionValue(0);
+  const bgY = useTransform(progress, [0, 1], ["120px", "-120px"]);
 
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
+  useEffect(() => {
+    const update = () => {
+      const el = sectionRef.current;
+      if (!el) return;
+      const { top, height } = el.getBoundingClientRect();
+      const vh = window.innerHeight;
+      // 0 = sección entrando por abajo, 1 = sección saliendo por arriba
+      const p = (vh - top) / (vh + height);
+      progress.set(Math.max(0, Math.min(1, p)));
+    };
 
-  /*
-    La imagen está sobredimensionada 150px arriba y abajo (-top-[150px] -bottom-[150px]).
-    Al hacer scroll el div se desplaza 120px hacia arriba (-120px) o abajo (+120px),
-    revelando partes distintas de la imagen — efecto parallax real.
-    El buffer de 150px asegura que nunca haya espacio vacío en los bordes.
-  */
-  const bgY = useTransform(scrollYProgress, [0, 1], ["120px", "-120px"]);
+    window.addEventListener("scroll", update, { passive: true });
+    update();
+    return () => window.removeEventListener("scroll", update);
+  }, [progress]);
 
   return (
     <section
-      ref={ref}
+      ref={sectionRef}
       className="relative overflow-hidden min-h-[560px] flex items-center justify-center"
     >
       {/* Parallax background — oversized so the y movement never exposes edges */}
@@ -32,7 +37,7 @@ export default function ParallaxQuote() {
           y: bgY,
           backgroundImage: "url('/images/placeholders/parallax.jpg')",
           backgroundSize: "cover",
-          backgroundPosition: "center center",
+          backgroundPosition: "center",
         }}
         className="absolute inset-x-0 -top-[150px] -bottom-[150px]"
       />
