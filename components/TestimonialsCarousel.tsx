@@ -7,31 +7,31 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 const testimonials = [
   {
     name: "Joselin Yebra",
-    location: "Satélite, Estado de México",
+    location: "Providencia, Región Metropolitana",
     text: "Un lugar hermoso, con instalaciones y equipo de muy alta calidad. El mejor lugar para cuidar de tu cuerpo.",
     stars: 5,
   },
   {
     name: "Jessica Michaus",
-    location: "Polanco, México City",
+    location: "Quilicura, Región Metropolitana",
     text: "Me encantó el lugar! Súper recomendable todo el equipo de Polanco son muy profesionales y súper amables.",
     stars: 5,
   },
   {
     name: "Karen Anahí Arriaga Fuentes",
-    location: "Pedregal, México City",
+    location: "Las Condes, Región Metropolitana",
     text: "Llevo desde 2019 con Bodylux y siempre lo recomiendo. Los tratamientos son innovadores y no he encontrado un lugar como Bodylux. El trato, limpieza y profesionalismo es impecable y los resultados extraordinarios!",
     stars: 5,
   },
   {
     name: "Valentina Torres",
-    location: "Lomas de Chapultepec",
+    location: "Lo Barnechea, Región Metropolitana",
     text: "Mi transformación fue completa, no solo física sino también emocional. Bodylux me devolvió la confianza que necesitaba. Lo recomiendo a todas mis amigas.",
     stars: 5,
   },
   {
     name: "Carolina Martínez",
-    location: "Santa Fe, México City",
+    location: "Ñuñoa, Región Metropolitana",
     text: "Nunca pensé que podría sentirme tan cómoda y segura en un espacio de estética. El equipo es excepcional, profesional y genuinamente comprometido con tu bienestar.",
     stars: 5,
   },
